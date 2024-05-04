@@ -209,6 +209,7 @@ int Output::getCrntPenWidth() const		//get current pen width
 //RECTANGLE 
 void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
 {
+	RectGfxInfo.type = "Rectangle";
 	color DrawingClr;
 	if(selected)	
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
@@ -233,6 +234,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 //TRIANGLE
 void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool selected) const
 {
+	TriGfxInfo.type = "Triangle";
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
@@ -258,6 +260,7 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 
 void Output::DrawSqr(Point P1, int length, GfxInfo SqrGfxInfo, bool selected) const 
 {
+	SqrGfxInfo.type = "Square";
 	Point p1;
 	p1.x = P1.x - (length / 2);
 	p1.y = P1.y - (length / 2);
@@ -289,6 +292,7 @@ void Output::DrawSqr(Point P1, int length, GfxInfo SqrGfxInfo, bool selected) co
 
 void Output::DrawCirc(Point P1, Point P2, GfxInfo CircleGfxinfo, bool selected) const
 {
+	CircleGfxinfo.type = "Circle";
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
@@ -343,6 +347,7 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo CircleGfxinfo, bool selected) 
 
 void Output::DrawHex(Point P1, int length, GfxInfo polygonGfxInfo, bool selected) const
 {
+	polygonGfxInfo.type = "Hexagon";
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor;

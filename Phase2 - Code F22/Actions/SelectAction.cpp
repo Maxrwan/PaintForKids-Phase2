@@ -16,7 +16,6 @@ void SelectAction::ReadActionParameters()
 	pOut->PrintMessage("Select: Click on any item. ");
 	pIn->GetPointClicked(p.x, p.y);
 	pOut->ClearStatusBar();
-
 }
 
 void SelectAction::Execute()
