@@ -5,9 +5,13 @@
 
 class PickAndHide : public Action
 {
+private:
 	Point p;
-	CFigure* reference;
+	color fillcolor;
+	bool isFilled;
+	string figureType;
 	ActionType mode;
+	int correct;
 
 public:
 	PickAndHide(ApplicationManager* pApp);

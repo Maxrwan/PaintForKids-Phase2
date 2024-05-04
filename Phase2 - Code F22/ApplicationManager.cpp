@@ -49,7 +49,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SelectAction(this);
 			break;
 
-		case PICK_HIDE:
+		case TO_PLAY:
 			pAct = new PickAndHide(this);
 			break;
 
@@ -123,6 +123,11 @@ CFigure* ApplicationManager::GetRandom()
 		return FigList[rand() % FigCount];
 	}
 	return nullptr;
+}
+
+int ApplicationManager::GetFigCount() const
+{
+	return FigCount;
 }
 
 //==================================================================================//

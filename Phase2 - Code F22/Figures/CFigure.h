@@ -25,7 +25,11 @@ public:
 	
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
-	bool Hide(bool hide);
+	string getType() const;
+	bool getFilled() const;
+	color getColor() const;
+	void Hide(bool hide);
+	bool isHide() const;
 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
