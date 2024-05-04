@@ -115,6 +115,29 @@ void ApplicationManager::DeselectFigures()
 	SelectedFigCount = 0;
 }
 
+void ApplicationManager::DeselectFigure(CFigure* pDeselect)
+{
+	if (SelectedFigCount > 1)
+	{
+		for (int i = 0; i < SelectedFigCount; i++)
+		{
+			if (SelectedFig[i] == pDeselect)
+			{
+				SelectedFig[i]->SetSelected(false);
+				SelectedFig[i] = SelectedFig[SelectedFigCount - 1];
+				SelectedFig[i] = NULL;
+				SelectedFigCount--;
+			}
+		}
+	}
+	else
+	{
+		SelectedFig[SelectedFigCount - 1]->SetSelected(false);
+		SelectedFig[SelectedFigCount - 1] = NULL;
+		SelectedFigCount = 0;
+	}
+}
+
 CFigure* ApplicationManager::GetRandom()
 {
 	if (FigCount != 0) 
