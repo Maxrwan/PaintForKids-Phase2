@@ -115,15 +115,26 @@ void ApplicationManager::DeselectFigures()
 	SelectedFigCount = 0;
 }
 
-void ApplicationManager::DeselectFigure(CFigure* pFig)
+void ApplicationManager::DeselectFigure(CFigure* pDeselect)
 {
-	for (int i = SelectedFigCount - 1; i > 0; i--)
+	if (SelectedFigCount > 1)
 	{
-		if (SelectedFig[i] == pFig)
+		for (int i = 0; i < SelectedFigCount; i++)
 		{
-			SelectedFig[i] = SelectedFig[SelectedFigCount - 1];
-			SelectedFig[SelectedFigCount - 1] = NULL;
+			if (SelectedFig[i] == pDeselect)
+			{
+				SelectedFig[i]->SetSelected(false);
+				SelectedFig[i] = SelectedFig[SelectedFigCount - 1];
+				SelectedFig[i] = NULL;
+				SelectedFigCount--;
+			}
 		}
+	}
+	else
+	{
+		SelectedFig[SelectedFigCount - 1]->SetSelected(false);
+		SelectedFig[SelectedFigCount - 1] = NULL;
+		SelectedFigCount = 0;
 	}
 }
 

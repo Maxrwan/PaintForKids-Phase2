@@ -38,7 +38,7 @@ public:
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	void SelectedFigSetter(CFigure* pSelected);		//Sets selected figure
 	void DeselectFigures();		//Deselects all figures
-	void DeselectFigure(CFigure* pFig);
+	void DeselectFigure(CFigure* pDeselect);
 	CFigure* GetRandom();
 	int GetFigCount() const;
 		
