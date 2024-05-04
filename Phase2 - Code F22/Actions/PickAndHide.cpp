@@ -20,8 +20,10 @@ void PickAndHide::ReadActionParameters()
 	isFilled = figure->getFilled();		//filled or not filled
 	figureType = figure->getType();		//what kind of shape is it
 
-	pOut->PrintMessage("Type, Fill, or Color?");
-	mode = pManager->GetUserAction();
+	do {
+		pOut->PrintMessage("Type, Fill, or Color?");
+		mode = pManager->GetUserAction();
+	} while ((mode != FIGURE) || (mode != TYPE) || (mode != COLOR));
 }
 
 void PickAndHide::Execute()
@@ -34,6 +36,10 @@ void PickAndHide::Execute()
 	pManager->DeselectFigures();
 
 	ReadActionParameters();
+
+	pOut->ClearDrawArea();
+
+	pManager->UpdateInterface();
 
 	for (int i = 0; i < (pManager->GetFigCount()); i++)
 	{
@@ -53,8 +59,5 @@ void PickAndHide::Execute()
 				correct++;
 		}
 	}
-	pOut->ClearDrawArea();
-
-	pManager->UpdateInterface();
 
 }

@@ -37,6 +37,7 @@ void SelectAction::Execute()
 		{
 			pOut->PrintMessage("Deselected");
 			figure->SetSelected(false);
+			pManager->DeselectFigure(figure);
 		}
 		else
 		{
