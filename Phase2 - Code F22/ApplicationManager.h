@@ -39,6 +39,7 @@ public:
 	void SelectedFigSetter(CFigure* pSelected);		//Sets selected figure
 	void DeselectFigures();		//Deselects all figures
 	void DeselectFigure(CFigure* pDeselect);
+	void RemoveFigure();
 	CFigure* GetRandom();
 	int GetFigCount() const;
 		

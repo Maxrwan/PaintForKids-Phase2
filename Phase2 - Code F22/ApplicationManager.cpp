@@ -1,7 +1,8 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
 #include "Actions\SelectAction.h"
-#include "Actions/PickAndHide.h"
+#include "Actions\PickAndHide.h"
+#include "Actions\Del.h"
 #include <cstdlib>
 #include <ctime>
 
@@ -52,6 +53,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TO_PLAY:
 			pAct = new PickAndHide(this);
 			break;
+		case DELETE_ITMS:
+			pAct = new Del(this);
 
 		case EXIT:
 			///create ExitAction here
@@ -131,12 +134,52 @@ void ApplicationManager::DeselectFigure(CFigure* pDeselect)
 		}
 	}
 	else
+
 	{
 		SelectedFig[SelectedFigCount - 1]->SetSelected(false);
 		SelectedFig[SelectedFigCount - 1] = NULL;
 		SelectedFigCount = 0;
 	}
 }
+
+void ApplicationManager::RemoveFigure()
+{
+	if (SelectedFigCount != 0)
+	{
+		if (SelectedFigCount != FigCount)
+		{
+			for (int i = 0; i < SelectedFigCount; i++) {
+				for (int j = 0; j < FigCount; j++) {
+					if (SelectedFig[i] == FigList[j]) {
+						SelectedFig[i] = SelectedFig[SelectedFigCount - 1];
+						SelectedFig[SelectedFigCount - 1] = NULL;
+						FigList[j] = FigList[FigCount - 1];
+						FigList[FigCount - 1] = NULL;
+						SelectedFigCount--;
+						FigCount--;
+					}
+				}
+			}
+		}
+		else
+		{
+			for (int i = 0; i < SelectedFigCount; i++)
+			{
+				SelectedFig[i] = NULL;
+				SelectedFigCount--;
+			}
+			for (int i = 0; i < FigCount; i++)
+			{
+				FigList[i] = NULL;
+				FigCount--;
+			}
+		}
+	}
+	else
+		pOut->PrintMessage("Please select figures to delete. ");
+
+}
+
 
 CFigure* ApplicationManager::GetRandom()
 {
